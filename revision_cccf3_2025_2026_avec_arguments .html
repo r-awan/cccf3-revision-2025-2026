@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révision Générale - CCCF3 2025/2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F5F0E8;
+            --beige: #E8DCC8;
+            --sage: #7A8B6E;
+            --terracotta: #C45C3E;
+            --burgundy: #8B2D3B;
+            --teal: #2D8B7A;
+            --mustard: #C4A23A;
+            --lavender: #9B8EC7;
+            --rose: #D4728A;
+            --dark: #2C2420;
+            --text: #3D352E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--beige) 0%, var(--cream) 100%);
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 3px solid var(--terracotta);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px; right: -50px;
+            width: 200px; height: 200px;
+            background: var(--rose);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px; left: -30px;
+            width: 150px; height: 150px;
+            background: var(--sage);
+            opacity: 0.12;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--burgundy);
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero .meta {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: var(--sage);
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: var(--dark);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-bar ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-bar a {
+            color: var(--cream);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-bar a:hover {
+            background: var(--terracotta);
+            transform: translateY(-1px);
+        }
+
+        /* Sections */
+        section { padding: 48px 0; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--beige);
+        }
+
+        .section-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--burgundy);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--sage);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .card.grammar { border-left-color: var(--terracotta); }
+        .card.softskill { border-left-color: var(--lavender); }
+        .card.notion { border-left-color: var(--teal); }
+        .card.method { border-left-color: var(--mustard); }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .card .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .tag-grammar { background: #FDE8E0; color: var(--terracotta); }
+        .tag-softskill { background: #E8E4F3; color: var(--lavender); }
+        .tag-notion { background: #E0F0EC; color: var(--teal); }
+        .tag-method { background: #F5ECD0; color: var(--mustard); }
+
+        /* Tables */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--sage);
+            color: white;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover td { background: #fafafa; }
+
+        /* Lists */
+        .styled-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .styled-list li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+        }
+
+        .styled-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--terracotta);
+            font-weight: bold;
+        }
+
+        /* Highlight boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, #F5ECD0 0%, #FDE8E0 100%);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 16px 0;
+            border: 1px solid rgba(196, 90, 62, 0.15);
+        }
+
+        .highlight-box.important {
+            background: linear-gradient(135deg, #FDE8E0 0%, #F5E0E4 100%);
+            border-color: rgba(139, 45, 59, 0.2);
+        }
+
+        .highlight-box h4 {
+            color: var(--burgundy);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Conjugation tables */
+        .conj-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .conj-cell {
+            background: var(--cream);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .conj-cell .pronoun {
+            font-size: 0.7rem;
+            color: var(--sage);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .conj-cell .form {
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-top: 2px;
+        }
+
+        /* Two column layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .two-col { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            text-align: center;
+            padding: 32px 0;
+            margin-top: 48px;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 16px;
+        }
+
+        .accordion-header {
+            padding: 18px 24px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--dark);
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover { background: #fafafa; }
+
+        .accordion-body {
+            padding: 0 24px 20px;
+            display: none;
+        }
+
+        .accordion.active .accordion-body { display: block; }
+        .accordion.active .accordion-header { color: var(--burgundy); }
+
+        /* Example sentences */
+        .example {
+            background: #f8f6f3;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-style: italic;
+            color: var(--text);
+            border-left: 3px solid var(--mustard);
+        }
+
+        .example .label {
+            font-style: normal;
+            font-weight: 600;
+            color: var(--mustard);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--beige);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            border: 3px solid var(--cream);
+        }
+
+        /* Print styles */
+        @media print {
+            .nav-bar { display: none; }
+            .hero { padding: 30px 0; }
+            .card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+            <h1>Révision Générale</h1>
+            <p class="subtitle">Les Notions du Cours</p>
+            <p class="meta">CCCF3 — 2025/2026 | Grammaire, Soft Skills & Citoyenneté Culturelle</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="container">
+            <ul>
+                <li><a href="#grammaire">Grammaire</a></li>
+                <li><a href="#softskills">Soft Skills</a></li>
+                <li><a href="#notions">Notions</a></li>
+                <li><a href="#methodologie">Méthodologie</a></li>
+                <li><a href="#arguments">Arguments</a></li>
+                <li><a href="#intro-conclusion">Intro/Concl</a></li>
+                <li><a href="#linkers">Linkers</a></li>
+                <li><a href="#vocabulaire">Vocabulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- GRAMMAIRE -->
+    <section id="grammaire">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon" style="background: #FDE8E0;">📐</div>
+                <h2>Points Grammaticaux</h2>
+            </div>
+
+            <!-- Pronoms Relatifs -->
+            <div class="accordion active">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>1. Les Pronoms Relatifs (Simples & Composés)</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+                    <p style="margin-bottom:16px; color: var(--sage); font-weight: 500;">Les pronoms relatifs servent à relier deux phrases en remplaçant un nom déjà mentionné (l'antécédent).</p>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pronom</th>
+                                    <th>Fonction</th>
+                                    <th>Exemple (Art & Culture)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong style="color:var(--burgundy)">qui</strong></td>
+                                    <td>Sujet (personne ou chose)</td>
+                                    <td><em>L'artiste <strong>qui</strong> expose au musée d'Orsay est célèbre pour ses portraits.</em></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:var(--burgundy)">que (qu')</strong></td>
+                                    <td>COD (complément d'objet direct)</td>
+                                    <td><em>La fresque <strong>que</strong> nous avons admirée représente une scène mythologique.</em></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:var(--burgundy)">où</strong></td>
+                                    <td>Complément de lieu ou de temps</td>
+                                    <td><em>Le Louvre est l'endroit <strong>où</strong> l'on peut voir la Joconde.</em></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:var(--burgundy)">dont</strong></td>
+                                    <td>Complément introduit par <em>de</em> (possession, origine)</td>
+                                    <td><em>C'est un peintre <strong>dont</strong> les œuvres s'inspirent des traditions africaines.</em></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="highlight-box important">
+                        <h4>⚠️ Pronoms Relatifs Composés</h4>
+                        <p>Utilisés quand le relatif a une préposition autre que <em>« de »</em> devant lui (<em>à, avec, sur, dans</em>, etc.)</p>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pronom</th>
+                                    <th>Fonction</th>
+                                    <th>Exemple</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>lequel / laquelle / lesquels / lesquelles</strong></td>
+                                    <td>Complément précédé d'une préposition</td>
+                                    <td><em>Le style baroque, <strong>sur lequel</strong> nous avons travaillé, reflète le goût du XVIIe siècle.</em></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>auquel / à laquelle / auxquels / auxquelles</strong></td>
+                                    <td>Complément précédé de <em>à</em></td>
+                                    <td><em>C'est un festival <strong>auquel</strong> participent de nombreux artistes émergents.</em></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>duquel / de laquelle / desquels / desquelles</strong></td>
+                                    <td>Complément précédé de <em>de</em> (prép. composée)</td>
+                                    <td><em>La galerie près <strong>de laquelle</strong> nous avons déjeuné abrite une exposition impressionniste.</em></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Le Subjonctif -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>2. Le Subjonctif</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="two-col">
+                        <div>
+                            <h4 style="color:var(--burgundy); margin-bottom:12px;">Formation du subjonctif présent</h4>
+                            <ul class="styled-list">
+                                <li>Radical = 3ème personne du pluriel du présent de l'indicatif</li>
+                                <li>Terminaisons : <strong>-e, -es, -e, -ions, -iez, -ent</strong></li>
+                                <li>Nous/vous = identique à l'imparfait de l'indicatif</li>
+                            </ul>
+
+                            <div class="example">
+                                <span class="label">Exemple — Parler</span>
+                                parl<strong>e</strong>, parl<strong>es</strong>, parl<strong>e</strong>, parl<strong>ions</strong>, parl<strong>iez</strong>, parl<strong>ent</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color:var(--burgundy); margin-bottom:12px;">Verbes irréguliers essentiels</h4>
+                            <div class="table-wrap">
+                                <table style="font-size:0.8rem;">
+                                    <tr><td><strong>Aller</strong></td><td>aille, ailles, aille, allions, alliez, aillent</td></tr>
+                                    <tr><td><strong>Avoir</strong></td><td>aie, aies, ait, ayons, ayez, aient</td></tr>
+                                    <tr><td><strong>Être</strong></td><td>sois, sois, soit, soyons, soyez, soient</td></tr>
+                                    <tr><td><strong>Faire</strong></td><td>fasse, fasses, fasse, fassions, fassiez, fassent</td></tr>
+                                    <tr><td><strong>Pouvoir</strong></td><td>puisse, puisses, puisse, puissions, puissiez, puissent</td></tr>
+                                    <tr><td><strong>Savoir</strong></td><td>sache, saches, sache, sachions, sachiez, sachent</td></tr>
+                                    <tr><td><strong>Vouloir</strong></td><td>veuille, veuilles, veuille, voulions, vouliez, veuillent</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top:20px;">
+                        <h4>📋 Les emplois du subjonctif</h4>
+                        <div class="two-col" style="margin-top:12px;">
+                            <div>
+                                <p style="font-weight:600; color:var(--terracotta); margin-bottom:8px;">Volonté / Désir / Souhait</p>
+                                <p style="font-size:0.85rem;">vouloir que, exiger que, souhaiter que, défendre que, interdire que, recommander que, avoir besoin que, préférer que, demander que...</p>
+                            </div>
+                            <div>
+                                <p style="font-weight:600; color:var(--terracotta); margin-bottom:8px;">Nécessité / Obligation</p>
+                                <p style="font-size:0.85rem;">il faut que, il est essentiel que, il est important que, il est nécessaire que, il est temps que, il vaut mieux que, il est urgent que...</p>
+                            </div>
+                            <div>
+                                <p style="font-weight:600; color:var(--terracotta); margin-bottom:8px;">Sentiment / Émotion / Opinion</p>
+                                <p style="font-size:0.85rem;">aimer que, craindre que, regretter que, être content que, être furieux que, être triste que, il est bon que, il est dommage que, il est étonnant que...</p>
+                            </div>
+                            <div>
+                                <p style="font-weight:600; color:var(--terracotta); margin-bottom:8px;">Possibilité / Probabilité / Doute</p>
+                                <p style="font-size:0.85rem;">douter que, il est possible que, il est peu probable que, il est impossible que, il se peut que, il semble que, refuser de croire que...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Le Conditionnel -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>3. Le Conditionnel (Présent & Passé)</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="two-col">
+                        <div>
+                            <h4 style="color:var(--burgundy); margin-bottom:12px;">Conditionnel présent</h4>
+                            <p style="font-size:0.9rem; margin-bottom:12px;">Radical du futur simple + terminaisons de l'imparfait : <strong>-ais, -ais, -ait, -ions, -iez, -aient</strong></p>
+                            <div class="example">
+                                <span class="label">Parler</span>
+                                je parler<strong>ais</strong>, tu parler<strong>ais</strong>, il parler<strong>ait</strong>, nous parler<strong>ions</strong>, vous parler<strong>iez</strong>, ils parler<strong>aient</strong>
+                            </div>
+
+                            <h4 style="color:var(--burgundy); margin:20px 0 12px;">Conditionnel passé</h4>
+                            <p style="font-size:0.9rem;">Auxiliaire <em>avoir</em> ou <em>être</em> au conditionnel présent + participe passé</p>
+                            <div class="example">
+                                <span class="label">Parler</span>
+                                j'aurais parlé, tu aurais parlé, il aurait parlé...
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color:var(--burgundy); margin-bottom:12px;">Emplois</h4>
+                            <div class="table-wrap">
+                                <table style="font-size:0.8rem;">
+                                    <thead>
+                                        <tr><th>Conditionnel présent</th><th>Conditionnel passé</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Imaginaire (on vivrait...)</td><td>Action imaginaire dans le passé</td></tr>
+                                        <tr><td>Souhait (J'aimerais...)</td><td>Regrets / Remords</td></tr>
+                                        <tr><td>Demande polie (Pourriez-vous...?)</td><td>Action non réalisée</td></tr>
+                                        <tr><td>Politesse (Je voudrais...)</td><td>Supposition dans le passé</td></tr>
+                                        <tr><td>Doute (Il devrait...)</td><td>Reproche</td></tr>
+                                        <tr><td>Conseil (Tu devrais...)</td><td>Information non confirmée</td></tr>
+                                        <tr><td>Probabilité (Il pourrait...)</td><td></td></tr>
+                                        <tr><td>Futur dans le passé (Il a dit qu'il viendrait)</td><td></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box important" style="margin-top:20px;">
+                        <h4>🔗 Systèmes hypothétiques</h4>
+                        <p><strong>Irréel du présent :</strong> Si + imparfait → conditionnel présent<br>
+                        <em>Si nous étions en Australie, nous verrions sauter des kangourous.</em></p>
+                        <p style="margin-top:8px;"><strong>Irréel du passé :</strong> Si + plus-que-parfait → conditionnel passé<br>
+                        <em>Vous auriez mieux compris, si vous aviez lu le texte en entier.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voix Active & Passive -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>4. La Voix Active et la Voix Passive</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="two-col">
+                        <div class="card grammar" style="border-left-color: var(--sage);">
+                            <h3>Voix Active</h3>
+                            <p>Le <strong>sujet fait l'action</strong>.</p>
+                            <div class="example">
+                                <span class="label">Structure</span>
+                                Sujet + Verbe + COD
+                            </div>
+                            <div class="example">
+                                <span class="label">Exemple</span>
+                                L'artiste dévoile <u>son tableau</u>.<br>
+                                <small>(Sujet) (verbe) (COD)</small>
+                            </div>
+                        </div>
+                        <div class="card grammar" style="border-left-color: var(--burgundy);">
+                            <h3>Voix Passive</h3>
+                            <p>Le <strong>sujet subit l'action</strong>.</p>
+                            <div class="example">
+                                <span class="label">Structure</span>
+                                Sujet (ancien COD) + être + participe passé + par/de + Complément d'agent
+                            </div>
+                            <div class="example">
+                                <span class="label">Exemple</span>
+                                Le tableau <u>est dévoilé</u> par l'artiste.<br>
+                                <small>(Sujet) (verbe) (Complément d'agent)</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap" style="margin-top:20px;">
+                        <table>
+                            <thead>
+                                <tr><th>Temps</th><th>Voix Active</th><th>Voix Passive</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Présent</strong></td><td>Les graffeurs influencent la jeunesse urbaine.</td><td>La jeunesse urbaine <strong>est influencée</strong> par les graffeurs.</td></tr>
+                                <tr><td><strong>Imparfait</strong></td><td>Les punks influençaient la mode alternative.</td><td>La mode alternative <strong>était influencée</strong> par les punks.</td></tr>
+                                <tr><td><strong>Futur</strong></td><td>Les artistes hip-hop influenceront les tendances.</td><td>Les tendances <strong>seront influencées</strong> par les artistes hip-hop.</td></tr>
+                                <tr><td><strong>Passé composé</strong></td><td>Les groupes de rock ont influencé la culture.</td><td>La culture <strong>a été influencée</strong> par les groupes de rock.</td></tr>
+                                <tr><td><strong>Passé simple</strong></td><td>Les dadaïstes influencèrent l'art moderne.</td><td>L'art moderne <strong>fut influencé</strong> par les dadaïstes.</td></tr>
+                                <tr><td><strong>Plus-que-parfait</strong></td><td>Les beatniks avaient influencé la littérature.</td><td>La littérature <strong>avait été influencée</strong> par les beatniks.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connecteurs & Modalisateurs -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>5. Connecteurs Logiques & Modalisateurs</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="card-grid">
+                        <div class="card grammar">
+                            <span class="tag tag-grammar">Addition</span>
+                            <h3>Énumération</h3>
+                            <p>et, de plus, en outre, également, aussi, non seulement... mais aussi</p>
+                        </div>
+                        <div class="card grammar">
+                            <span class="tag tag-grammar">Opposition</span>
+                            <h3>Contraste</h3>
+                            <p>mais, cependant, néanmoins, toutefois, par contre, en revanche, bien que</p>
+                        </div>
+                        <div class="card grammar">
+                            <span class="tag tag-grammar">Cause</span>
+                            <h3>Explication</h3>
+                            <p>car, parce que, en effet, puisque, étant donné que, à cause de</p>
+                        </div>
+                        <div class="card grammar">
+                            <span class="tag tag-grammar">Conséquence</span>
+                            <h3>Résultat</h3>
+                            <p>donc, ainsi, par conséquent, c'est pourquoi, d'où, de ce fait</p>
+                        </div>
+                        <div class="card grammar">
+                            <span class="tag tag-grammar">But</span>
+                            <h3>Objectif</h3>
+                            <p>pour, afin de, dans le but de, en vue de, de manière à</p>
+                        </div>
+                        <div class="card grammar">
+                            <span class="tag tag-grammar">Condition</span>
+                            <h3>Hypothèse</h3>
+                            <p>si, à condition que, pourvu que, au cas où, à moins que</p>
+                        </div>
+                        <div class="card grammar">
+                            <span class="tag tag-grammar">Temps</span>
+                            <h3>Chronologie</h3>
+                            <p>d'abord, ensuite, puis, enfin, finalement, auparavant, lorsque</p>
+                        </div>
+                        <div class="card grammar">
+                            <span class="tag tag-grammar">Exemple</span>
+                            <h3>Illustration</h3>
+                            <p>par exemple, notamment, en particulier, tel que, comme</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top:20px;">
+                        <h4>💡 Modalisateurs (marquer la subjectivité)</h4>
+                        <p style="margin-top:8px;"><strong>Certitude :</strong> certainement, sans aucun doute, indéniablement, assurément<br>
+                        <strong>Probabilité :</strong> probablement, vraisemblablement, sans doute, apparemment<br>
+                        <strong>Doute :</strong> peut-être, éventuellement, il se pourrait que<br>
+                        <strong>Nécessité :</strong> il faut, il est nécessaire de, il est indispensable de<br>
+                        <strong>Possibilité :</strong> il est possible de, on peut, il suffit de</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOFT SKILLS -->
+    <section id="softskills" style="background: linear-gradient(180deg, var(--cream) 0%, #f0ecf5 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon" style="background: #E8E4F3;">🧠</div>
+                <h2>Soft Skills</h2>
+            </div>
+
+            <div class="card-grid">
+                <div class="card softskill">
+                    <span class="tag tag-softskill">Compétence Clé</span>
+                    <h3>L'Intelligence Collective</h3>
+                    <p>Capacité d'un groupe à <strong>combiner compétences, connaissances et expériences</strong> pour résoudre des problèmes complexes plus efficacement qu'individuellement.</p>
+                    <ul class="styled-list" style="margin-top:12px; font-size:0.9rem;">
+                        <li><strong>5 facteurs clés :</strong> diversité des compétences, communication efficace, confiance mutuelle, feedback constructif, collaboration ouverte</li>
+                        <li><strong>Dans la nature :</strong> bancs de poissons, abeilles, fourmis</li>
+                        <li><strong>En entreprise :</strong> crowdsourcing, plateformes collaboratives, équipes multidisciplinaires</li>
+                    </ul>
+                </div>
+
+                <div class="card softskill">
+                    <span class="tag tag-softskill">Compétence Comportementale</span>
+                    <h3>L'Empathie</h3>
+                    <p>Capacité à <strong>percevoir et comprendre les émotions, pensées et perspectives des autres</strong> sans nécessairement les ressentir personnellement.</p>
+                    <div style="margin-top:12px; padding:12px; background:#f5f3fa; border-radius:8px;">
+                        <p style="font-weight:600; color:var(--lavender); font-size:0.85rem; margin-bottom:8px;">Les 3 types (Daniel Goleman) :</p>
+                        <p style="font-size:0.85rem;"><strong style="color:var(--terracotta)">Cognitive</strong> — compréhension intellectuelle<br>
+                        <strong style="color:var(--terracotta)">Émotionnelle</strong> — résonance émotionnelle<br>
+                        <strong style="color:var(--terracotta)">Comportementale</strong> — actions concrètes de soutien</p>
+                    </div>
+                    <p style="margin-top:12px; font-size:0.9rem;">Renforce les relations, améliore la communication, favorise l'écoute active. Se développe par l'auto-connaissance, l'écoute active et l'adoption de la perspective de l'autre.</p>
+                </div>
+
+                <div class="card softskill">
+                    <span class="tag tag-softskill">Compétence Créative</span>
+                    <h3>La Créativité</h3>
+                    <p>Capacité à <strong>produire des idées nouvelles et pertinentes</strong> en dépassant les modes de pensée habituels. En ingénierie : aptitude à élaborer des solutions innovantes.</p>
+                    <div style="margin-top:12px;">
+                        <p style="font-size:0.85rem;"><strong>4 dimensions :</strong> originalité, utilité, flexibilité, élaboration</p>
+                        <p style="font-size:0.85rem; margin-top:6px;"><strong>Obstacles :</strong> peur, conformisme, manque de curiosité, routine</p>
+                        <p style="font-size:0.85rem; margin-top:6px;"><strong>Techniques :</strong> brainstorming, mind mapping, méthode SCAMPER, Design Thinking, hackathons</p>
+                    </div>
+                </div>
+
+                <div class="card softskill">
+                    <span class="tag tag-softskill">Méta-compétence</span>
+                    <h3>Apprendre à Apprendre</h3>
+                    <p>Compétence clé consistant à développer des <strong>stratégies et habitudes efficaces</strong> pour acquérir de nouvelles connaissances de manière autonome et continue.</p>
+                    <ul class="styled-list" style="margin-top:12px; font-size:0.9rem;">
+                        <li>Conscience de ses besoins en apprentissage</li>
+                        <li>Formation continue pour renforcer l'employabilité</li>
+                        <li>Apprentissage autonome pour gagner du temps</li>
+                        <li>Piliers : métacognition, motivation, curiosité, gestion de l'information, pratique concrète</li>
+                        <li>Méthodes : technique de Feynman, mind mapping, apprentissage actif, plan personnalisé</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOTIONS -->
+    <section id="notions">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon" style="background: #E0F0EC;">🎨</div>
+                <h2>Notions du Cours</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="card notion">
+                        <span class="tag tag-notion">Notion 1</span>
+                        <h3>Initiation à la Citoyenneté Culturelle et Artistique</h3>
+                        <p>Encourage l'<strong>engagement actif</strong> dans la vie culturelle et artistique, au-delà de la simple consommation passive.</p>
+                        <ul class="styled-list" style="margin-top:10px; font-size:0.9rem;">
+                            <li>Valorise la <strong>préservation du patrimoine culturel</strong></li>
+                            <li>Encourage la <strong>diversité et le dialogue interculturel</strong></li>
+                            <li>Considère la création artistique comme un <strong>vecteur de communication</strong> puissant</li>
+                            <li>L'art comme <strong>thérapie d'extériorisation</strong></li>
+                            <li>Objectif : former des citoyens actifs, conscients et engagés</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card notion">
+                        <span class="tag tag-notion">Notion 2</span>
+                        <h3>L'Art, Instrument du Changement Social</h3>
+                        <p>L'art comme <strong>agent de transformation</strong> et mobilisateur essentiel du changement social.</p>
+                        <div style="margin-top:12px;">
+                            <p style="font-weight:600; color:var(--teal); font-size:0.9rem;">L'art comme critique sociale :</p>
+                            <p style="font-size:0.85rem; margin-left:12px;">• <strong>Art satirique</strong> — humour, dérision, critique sarcastique des injustices<br>
+                            • <strong>Art du proteste</strong> — défier les normes, critiquer les injustices sociales/politiques</p>
+
+                            <p style="font-weight:600; color:var(--teal); font-size:0.9rem; margin-top:10px;">L'art comme sensibilisation :</p>
+                            <p style="font-size:0.85rem; margin-left:12px;">• <strong>Art engagé</strong> — s'investit dans des questions sociales, politiques, environnementales pour provoquer réflexion et changement</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card notion">
+                        <span class="tag tag-notion">Notion 3</span>
+                        <h3>Liberté Artistique & Devoirs Éthiques</h3>
+                        <p>La liberté d'expression artistique est un <strong>principe fondamental</strong> permettant de créer sans restrictions, mais elle n'est pas absolue.</p>
+                        <ul class="styled-list" style="margin-top:10px; font-size:0.9rem;">
+                            <li>Doit être <strong>encadrée</strong> quand elle incite à la haine, violence ou atteinte aux droits d'autrui</li>
+                            <li>L'<strong>éthique artistique</strong> oriente la création en tenant compte de l'intégrité, l'impact social, la réception</li>
+                            <li>L'inspiration culturelle doit respecter le <strong>droit d'auteur</strong> et le contexte d'origine</li>
+                            <li>L'art exploitant la souffrance franchit la limite éthique</li>
+                            <li>Vigilance éthique cruciale dans l'<strong>espace public</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card notion">
+                        <span class="tag tag-notion">Notion 4</span>
+                        <h3>L'Appropriation Culturelle</h3>
+                        <p>Utilisation d'éléments culturels <strong>sans respect ni compréhension</strong>, conduisant à la dévalorisation et exploitation des cultures minoritaires.</p>
+                        <ul class="styled-list" style="margin-top:10px; font-size:0.9rem;">
+                            <li>Résulte d'un manque de sensibilité au contexte</li>
+                            <li><strong>Discréditation</strong> et <strong>Cancel Culture</strong> visent l'appropriation sans reconnaissance</li>
+                            <li>Reflette un processus de <strong>transculturation</strong></li>
+                            <li>Solution : approche respectueuse et éducative</li>
+                            <li><strong>L'appréciation culturelle</strong> (positive) = compréhension profonde + célébration respectueuse basée sur l'égalité</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card notion">
+                        <span class="tag tag-notion">Notion 5</span>
+                        <h3>Subcultures & Contre-cultures</h3>
+                        <p><strong>Subculture :</strong> groupes aux pratiques/valeurs différentes de la culture dominante, en coexistence.<br>
+                        <strong>Contre-culture :</strong> mouvement s'opposant directement aux normes dominantes, alternative radicale.</p>
+                        <div style="margin-top:12px; padding:12px; background:#f0f7f5; border-radius:8px;">
+                            <p style="font-weight:600; color:var(--teal); font-size:0.85rem;">Importance :</p>
+                            <p style="font-size:0.85rem;">Enrichissent la société (nouvelles façons de penser, créer, s'exprimer) • Sentiment d'appartenance • Terreau d'innovation • Rôle critique et transformateur</p>
+                            <p style="font-weight:600; color:var(--burgundy); font-size:0.85rem; margin-top:8px;">Défis :</p>
+                            <p style="font-size:0.85rem;">Marginalisation, tensions, récupération commerciale, fragmentation sociale, dérives extrêmes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card notion">
+                        <span class="tag tag-notion">Notion 6</span>
+                        <h3>L'Impact de l'Innovation Numérique sur la Culture et l'Art</h3>
+                        <div style="margin-top:10px;">
+                            <p style="font-weight:600; color:var(--teal);">✓ Avantages :</p>
+                            <p style="font-size:0.85rem; margin-left:12px;">Création facilitée (outils, logiciels) • Diffusion culturelle mondiale • Démocratisation de la culture • Expériences immersives (RA, RV) • Interactivité avec le public</p>
+
+                            <p style="font-weight:600; color:var(--burgundy); margin-top:10px;">✗ Menaces :</p>
+                            <p style="font-size:0.85rem; margin-left:12px;">Contrefaçon • Préservation des œuvres numériques • Réduction au divertissement commercial • Surconsommation culturelle compulsive</p>
+
+                            <p style="font-weight:600; color:var(--mustard); margin-top:10px;">→ Actions :</p>
+                            <p style="font-size:0.85rem; margin-left:12px;">Éducation et respect des normes éthiques • Codes de conduite • Faciliter l'accès aux ressources • Promouvoir la participation du public</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card notion">
+                        <span class="tag tag-notion">Notion 7</span>
+                        <h3>Le Jeu Vidéo, Témoin de la Mondialisation Culturelle</h3>
+                        <p>Média influent reflétant la <strong>mondialisation culturelle</strong> — convergence d'influences locales et internationales.</p>
+                        <ul class="styled-list" style="margin-top:10px; font-size:0.9rem;">
+                            <li>Diffusion mondiale via consoles et plateformes en ligne</li>
+                            <li>Reconnus comme <strong>œuvres d'art</strong> (narration, musique, graphismes, immersion)</li>
+                            <li>Thèmes universels + éléments culturels variés (folklore, mythologie)</li>
+                            <li>Outils d'apprentissage culturel et promotion de la tolérance</li>
+                            <li><strong>Défis :</strong> stéréotypes, manque d'authenticité, traduction, culture dominante</li>
+                            <li><strong>Avantages :</strong> innovation, attrait commercial mondial, collaborations interculturelles, compétences interculturelles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card notion">
+                        <span class="tag tag-notion">Notion 8</span>
+                        <h3>Le Bien-être Numérique à l'Ère de l'IA</h3>
+                        <p>Utilisation équilibrée et responsable des technologies.</p>
+                        <ul class="styled-list" style="margin-top:10px; font-size:0.9rem;">
+                            <li><strong>Infobésité :</strong> surcharge d'informations → stress et confusion</li>
+                            <li><strong>Dépendance numérique :</strong> usage compulsif nuisant à la santé mentale</li>
+                            <li><strong>Interfaces persuasives :</strong> prolongent l'usage en influençant les comportements</li>
+                            <li><strong>Bienveillance numérique</strong> et <strong>technocompassion</strong> : usage respectueux et éthique</li>
+                            <li><strong>Slow tech :</strong> utilisation réfléchie pour préserver l'équilibre personnel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÉTHODOLOGIE -->
+    <section id="methodologie" style="background: linear-gradient(180deg, #f0ecf5 0%, var(--cream) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon" style="background: #F5ECD0;">✍️</div>
+                <h2>Méthodologie de l'Argumentation</h2>
+            </div>
+
+            <div class="highlight-box" style="margin-bottom:28px;">
+                <h4>🎯 Les composantes</h4>
+                <div class="two-col" style="margin-top:12px;">
+                    <div>
+                        <p><strong style="color:var(--terracotta)">Thème</strong> = le sujet général<br>
+                        <strong style="color:var(--terracotta)">Thèse</strong> = la problématique spécifique à défendre<br>
+                        <strong style="color:var(--terracotta)">Argument</strong> = titre, raisonnement, théorie, exemple<br>
+                        <strong style="color:var(--terracotta)">Exemples</strong> = illustrent les arguments</p>
+                    </div>
+                    <div>
+                        <p style="font-style:italic; color:var(--sage);">La thèse se prononce sur le thème.<br>Les arguments prouvent la thèse.<br>Les exemples illustrent les arguments.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card method">
+                    <span class="tag tag-method">Introduction</span>
+                    <h3>I. Accrocher & Présenter</h3>
+                    <ul class="styled-list" style="font-size:0.9rem;">
+                        <li><strong>Sujet amené :</strong> la thématique générale</li>
+                        <li><strong>Sujet posé :</strong> le sujet précis</li>
+                        <li><strong>Problématique :</strong> question orientant la réflexion</li>
+                        <li><strong>Plan / Sujet divisé :</strong> annonce des parties</li>
+                    </ul>
+                </div>
+
+                <div class="card method">
+                    <span class="tag tag-method">Développement</span>
+                    <h3>II. Argumenter & Prouver</h3>
+                    <ul class="styled-list" style="font-size:0.9rem;">
+                        <li><strong>Présenter</strong> l'argument</li>
+                        <li><strong>Expliquer</strong> l'argument</li>
+                        <li><strong>Illustrer</strong> par des exemples</li>
+                        <li>2 arguments + 2 exemples (minimum)</li>
+                        <li><strong>Hiérarchiser</strong> par des articulateurs logiques</li>
+                    </ul>
+                </div>
+
+                <div class="card method">
+                    <span class="tag tag-method">Conclusion</span>
+                    <h3>III. Conclure & Ouvrir</h3>
+                    <ul class="styled-list" style="font-size:0.9rem;">
+                        <li><strong>Réponse</strong> à la question de départ</li>
+                        <li><strong>Réaffirmer</strong> le point de vue défendu</li>
+                        <li><strong>Synthèse</strong> (bilan complet)</li>
+                        <li><strong>Ouverture</strong> sur d'autres perspectives</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMUNICATION -->
+    <section id="vocabulaire">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon" style="background: #E0E8F0;">💬</div>
+                <h2>Communication & Vocabulaire</h2>
+            </div>
+
+            <div class="two-col">
+                <div class="card" style="border-left-color: var(--lavender);">
+                    <span class="tag" style="background:#E8E4F3; color:var(--lavender);">Communication Orale</span>
+                    <h3>Les 3C de la Communication</h3>
+                    <p><strong>Clarté</strong> + <strong>Concision</strong> + <strong>Confiance</strong> = message compréhensible, essentiel et convaincant</p>
+
+                    <div style="margin-top:16px;">
+                        <p style="font-weight:600; font-size:0.9rem; color:var(--dark);">Types de communication orale :</p>
+                        <p style="font-size:0.85rem; margin-top:6px;"><strong style="color:var(--teal)">Verbale</strong> (mots parlés) — 7%<br>
+                        <strong style="color:var(--terracotta)">Non verbale</strong> (gestes, expressions) — 55%<br>
+                        <strong style="color:var(--mustard)">Paraverbale</strong> (ton, volume, rythme) — 38%</p>
+                    </div>
+
+                    <div style="margin-top:16px;">
+                        <p style="font-weight:600; font-size:0.9rem; color:var(--dark);">5 micro-gestes professionnels (Jean Duvillard) :</p>
+                        <p style="font-size:0.85rem; margin-top:6px;">Posture située • Voix • Regard • Usage du mot • Positionnement tactique</p>
+                    </div>
+                </div>
+
+                <div class="card" style="border-left-color: var(--sage);">
+                    <span class="tag" style="background:#E0E8E0; color:var(--sage);">Vocabulaire Clé</span>
+                    <h3>Termes Essentiels du Cours</h3>
+                    <div style="font-size:0.85rem; line-height:2;">
+                        <p><strong style="color:var(--burgundy)">Citoyenneté culturelle</strong> — engagement actif</p>
+                        <p><strong style="color:var(--burgundy)">Patrimoine culturel</strong> — traditions, langues, expressions</p>
+                        <p><strong style="color:var(--burgundy)">Mondialisation culturelle</strong> — convergence locale/internationale</p>
+                        <p><strong style="color:var(--burgundy)">Démocratisation de la culture</strong> — accès élargi</p>
+                        <p><strong style="color:var(--burgundy)">Contre-culture / Subculture</strong> — alternatives sociales</p>
+                        <p><strong style="color:var(--burgundy)">Appropriation culturelle</strong> — vs appréciation culturelle</p>
+                        <p><strong style="color:var(--burgundy)">Art engagé / satirique / protestataire</strong></p>
+                        <p><strong style="color:var(--burgundy)">Infobésité / Dépendance numérique</strong></p>
+                        <p><strong style="color:var(--burgundy)">Slow tech / Bienveillance numérique</strong></p>
+                        <p><strong style="color:var(--burgundy)">Technocompassion</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- ARGUMENTS ET PARAGRAPHES PAR THÈME -->
+    <section id="arguments" style="background: linear-gradient(180deg, var(--cream) 0%, #f5f0ec 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon" style="background: #F5E0E4;">📝</div>
+                <h2>Arguments et Paragraphes par Thème</h2>
+            </div>
+
+            <!-- CHAPITRE 2 -->
+            <div class="accordion active">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>📐 Chapitre 2 : Le Rôle Transformatif de l'Art et de la Culture dans la Société</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+
+                    <!-- S3 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--teal);">
+                        <span class="tag tag-notion">S3 — Initiation à la Citoyenneté Artistique et Culturelle</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : L'art comme vecteur d'identité collective</h4>
+                            <p>L'art et la culture constituent les fondements de l'identité d'une société. Ils permettent aux citoyens de se reconnaître dans un héritage commun, de transmettre des valeurs et de créer un sentiment d'appartenance. La citoyenneté culturelle ne se limite pas à consommer passivement des œuvres ; elle implique une participation active à la vie culturelle, que ce soit par la création, la diffusion ou la préservation du patrimoine.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : La démocratisation de l'accès à la culture</h4>
+                            <p>La citoyenneté artistique exige que l'accès à la culture ne soit pas un privilège réservé à une élite. Les politiques culturelles, les programmes éducatifs et les initiatives communautaires visent à rendre l'art accessible à tous, indépendamment du milieu social ou géographique. Cette démocratisation renforce la cohésion sociale et permet à chaque individu de développer son sens critique et sa créativité.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : L'engagement citoyen par la pratique artistique</h4>
+                            <p>Participer à la vie culturelle, c'est exercer sa citoyenneté. Que ce soit par le bénévolat dans des festivals, la participation à des ateliers communautaires ou le soutien aux artistes locaux, chaque citoyen peut contribuer à l'enrichissement culturel de sa société. Cet engagement favorise le dialogue interculturel et la compréhension mutuelle.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « Être citoyen culturel, c'est plus qu'assister à un concert »</span>
+                            <p>Être citoyen culturel va bien au-delà de la simple consommation passive d'œuvres artistiques. Cela signifie s'engager activement dans la préservation et la promotion du patrimoine culturel, participer à des initiatives communautaires et soutenir la diversité artistique. Un citoyen culturel conscient reconnaît que la culture est un bien commun qui nécessite la participation de tous pour perdurer. Par exemple, le bénévolat dans des festivals locaux ou la participation à des ateliers d'art communautaires permettent de créer des liens sociaux tout en enrichissant le tissu culturel. Ainsi, la citoyenneté culturelle transforme le spectateur passif en acteur engagé de la vie sociale.</p>
+                        </div>
+                    </div>
+
+                    <!-- S4 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--burgundy);">
+                        <span class="tag tag-notion">S4 — L'Art, un Instrument de Changement Social</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : L'art comme miroir critique de la société</h4>
+                            <p>Depuis toujours, les artistes ont utilisé leur créativité pour dénoncer les injustices, questionner les normes établies et provoquer la réflexion. L'art satirique, la caricature politique et le street art sont autant de formes d'expression qui permettent de rendre visible ce que la société préfère cacher. En tenant un miroir à la société, l'art force le public à confronte ses propres préjugés et à réfléchir aux changements nécessaires.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : La mobilisation collective par l'art engagé</h4>
+                            <p>L'art engagé ne se contente pas de critiquer ; il mobilise. Les mouvements sociaux ont toujours utilisé l'art comme outil de rassemblement : chants de protestation, affiches politiques, performances dans l'espace public. Ces créations unissent les individus autour d'une cause commune, créent un sentiment de solidarité et donnent une voix aux marginalisés. L'art devient ainsi un catalyseur de transformation sociale.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : L'art comme thérapie et outil de résilience</h4>
+                            <p>Au-delà de la proteste, l'art offre un espace d'expression pour ceux qui souffrent. L'art-thérapie, la musique, la danse et l'écriture permettent d'extérioriser des émotions difficiles, de surmonter des traumatismes et de reconstruire son identité. Dans des contextes de conflit ou de marginalisation, l'art devient un acte de résistance et d'affirmation de soi.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « L'art peut-il vraiment changer le monde ? »</span>
+                            <p>L'art possède un pouvoir transformateur indéniable sur la société. En tant que miroir critique, il dénonce les injustices et interroge les normes établies, comme le font les caricaturistes politiques ou les street artists. De plus, l'art engagé mobilise les foules autour de causes communes : les chants de protestation durant les mouvements sociaux en sont un exemple frappant. Enfin, l'art sert d'outil de résilience pour les populations marginalisées, leur offrant un moyen d'expression et de reconstruction identitaire. Ainsi, bien que l'art ne change pas le monde seul, il constitue un levier puissant pour éveiller les consciences et inspirer l'action collective.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « L'art de la proteste »</span>
+                            <p>L'art de la proteste représente une forme d'expression puissante qui défie les normes sociales et politiques établies. Des graffitis muraux aux performances artistiques dans l'espace public, ces créations visent à sensibiliser le public aux injustices et à provoquer un changement. Par exemple, le street art de Banksy utilise l'humour et la dérision pour critiquer le consumérisme, la guerre et les inégalités. Ces œuvres, bien que parfois éphémères, laissent une empreinte durable dans la conscience collective et incitent à la réflexion. L'art de la proteste démontre que la créativité peut être un acte de résistance politique et sociale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHAPITRE 3 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>📐 Chapitre 3 : Liberté Artistique et Responsabilités Éthiques</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+
+                    <!-- S5 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--terracotta);">
+                        <span class="tag tag-notion">S5 — Liberté Artistique, Devoirs Éthiques</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : La liberté d'expression comme droit fondamental</h4>
+                            <p>La liberté artistique est un pilier de toute société démocratique. Elle permet aux créateurs d'explorer des idées controversées, de remettre en question l'ordre établi et d'exprimer des visions alternatives. Sans cette liberté, l'art devient de la propagande et la société perd sa capacité à évoluer par la critique constructive. Cependant, cette liberté n'est pas absolue.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : Les limites éthiques de la création</h4>
+                            <p>La liberté artistique doit être encadrée lorsqu'elle porte atteinte aux droits fondamentaux d'autrui. L'incitation à la haine, la glorification de la violence ou l'exploitation de la souffrance humaine franchissent la ligne entre expression légitime et acte nuisible. L'éthique artistique impose au créateur de réfléchir à l'impact de son œuvre sur le public et sur les groupes vulnérables.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : Le débat public comme régulateur</h4>
+                            <p>Plutôt que la censure, c'est le débat public qui doit encadrer la liberté artistique. Les controverses autour d'œuvres provocatrices stimulent la réflexion collective sur les valeurs de la société. Le rôle de l'artiste n'est pas de plaire à tout le monde, mais de provoquer un dialogue constructif. C'est dans cet espace de débat que se définissent les limites acceptables de la création.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « La liberté artistique a-t-elle des limites ? »</span>
+                            <p>La liberté artistique, bien que fondamentale dans une société démocratique, ne peut être considérée comme absolue. D'une part, elle permet aux créateurs d'explorer des idées controversées et de remettre en question l'ordre établi, ce qui est essentiel au progrès social. D'autre part, cette liberté doit être encadrée lorsqu'elle porte atteinte aux droits d'autrui, comme l'incitation à la haine ou l'exploitation de la souffrance. L'éthique artistique impose donc une réflexion sur l'impact des œuvres. Plutôt que la censure, c'est le débat public qui doit réguler ces limites, stimulant ainsi une réflexion collective sur nos valeurs communes.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « L'artiste a-t-il une responsabilité sociale ? »</span>
+                            <p>L'artiste, en tant que membre de la société, porte une responsabilité éthique indissociable de sa liberté créative. Bien qu'il doive pouvoir exprimer ses idées sans contrainte, il doit aussi considérer l'impact de ses œuvres sur le public. Une création qui glorifie la violence ou stigmatise des minorités franchit la limite entre expression légitime et acte nuisible. Cependant, cette responsabilité ne doit pas devenir une autocensure qui étouffe la créativité. L'artiste doit trouver un équilibre entre l'authenticité de son expression et le respect des valeurs fondamentales de dignité humaine.</p>
+                        </div>
+                    </div>
+
+                    <!-- S6 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--mustard);">
+                        <span class="tag tag-notion">S6 — L'Appropriation Culturelle</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : La différence entre appropriation et appréciation</h4>
+                            <p>L'appropriation culturelle consiste à emprunter des éléments d'une culture sans en comprendre le contexte, ni en respecter la signification, souvent à des fins commerciales ou esthétiques. En revanche, l'appréciation culturelle implique une compréhension profonde, un respect et une célébration authentique des traditions d'autrui. La frontière entre les deux repose sur l'intention, la connaissance et le respect du contexte d'origine.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : Les conséquences de l'appropriation culturelle</h4>
+                            <p>L'appropriation culturelle conduit à la dévalorisation des cultures minoritaires, à la perpétuation de stéréotypes et à l'exploitation économique. Lorsqu'une culture dominante s'approprie des symboles sacrés ou des pratiques traditionnelles sans reconnaissance, elle réduit ces éléments à de simples produits de consommation. Cette dynamique renforce les inégalités de pouvoir et nie l'agentivité des communautés d'origine.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : Vers une approche respectueuse de la transculturation</h4>
+                            <p>Les cultures ne sont jamais figées ; elles évoluent par échange et influence mutuelle. La transculturation, lorsqu'elle est menée avec respect, peut enrichir toutes les parties impliquées. Cela implique de créditer les sources d'inspiration, de collaborer avec les communautés d'origine et de s'éduquer sur la signification des éléments empruntés. La diversité culturelle ne se préserve pas par l'isolement, mais par un dialogue équitable.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « Appropriation culturelle : où tracer la ligne ? »</span>
+                            <p>L'appropriation culturelle pose la question délicate de savoir où tracer la ligne entre inspiration légitime et exploitation. Lorsqu'un créateur emprunte des éléments d'une culture sans en comprendre la signification ni respecter son contexte, il réduit ces symboles à de simples ornements esthétiques. Cette pratique dévalorise les cultures minoritaires et perpétue des inégalités de pouvoir. Cependant, les cultures évoluent par échange naturel. La solution réside dans une approche respectueuse : créditer les sources, collaborer avec les communautés concernées et s'éduquer sur les traditions empruntées. Ainsi, la transculturation peut devenir un enrichissement mutuel plutôt qu'une appropriation unilatérale.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « L'appréciation culturelle vs l'appropriation culturelle »</span>
+                            <p>L'appréciation culturelle et l'appropriation culturelle sont deux attitudes radicalement différentes envers les cultures étrangères. L'appréciation repose sur la compréhension profonde, le respect et la célébration authentique des traditions d'autrui. Elle implique de s'éduquer sur le contexte historique et social des pratiques observées. En revanche, l'appropriation réduit des éléments culturels significatifs à des accessoires de mode ou des produits commerciaux sans reconnaissance de leur origine. Par exemple, porter un vêtement traditionnel lors d'une cérémonie avec l'invitation et la bénédiction de la communauté concernée est de l'appréciation ; en revanche, commercialiser ce même vêtement sans créditer ni rémunérer la culture d'origine relève de l'appropriation. La différence cruciale réside dans l'intention, le respect et la reconnaissance.</p>
+                        </div>
+                    </div>
+
+                    <!-- S7 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--lavender);">
+                        <span class="tag tag-notion">S7 — Les Subcultures et les Contre-cultures : Être Citoyen Autrement</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : Les subcultures comme espaces d'expression alternative</h4>
+                            <p>Les subcultures offrent aux individus qui ne se reconnaissent pas dans la culture dominante un espace d'expression et d'identification. Que ce soit le mouvement punk, la culture hip-hop ou les communautés geek, ces groupes créent leurs propres normes, leurs symboles et leurs pratiques. Ils enrichissent la société en proposant des alternatives aux modes de pensée conventionnels et en favorisant l'innovation culturelle.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : La contre-culture comme force de transformation</h4>
+                            <p>Contrairement aux subcultures qui coexistent avec la culture dominante, les contre-cultures s'y opposent directement. Elles remettent en question les valeurs établies et proposent des modèles alternatifs de société. L'histoire montre que nombre de mouvements contre-culturels — le féminisme, l'écologie politique, les droits LGBTQ+ — ont fini par influencer profondément la société dominante, transformant des revendications marginales en normes sociales acceptées.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : Le défi de la récupération commerciale</h4>
+                            <p>Le principal danger pour les subcultures et contre-cultures est leur récupération par le marché. Lorsque des éléments de ces mouvements sont détournés à des fins commerciales, ils perdent leur substance critique et deviennent de simples produits de consommation. Cette « banalisation » risque d'affaiblir le message original et de diluer l'engagement politique ou social qui fondait le mouvement.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « Les subcultures enrichissent-elles la société ? »</span>
+                            <p>Les subcultures constituent un enrichissement indéniable pour la société en offrant des espaces d'expression alternative à ceux qui ne se reconnaissent pas dans la culture dominante. Le mouvement punk, par exemple, a introduit une critique radicale du consumérisme et de l'autoritarisme qui a influencé bien au-delà de ses membres. De même, la culture hip-hop est passée d'une expression marginale à un phénomène culturel mondial, enrichissant la musique, la mode et le langage. Cependant, le principal défi reste la récupération commerciale qui dilue le message original. Malgré cela, les subcultures continuent de jouer un rôle essentiel en tant que laboratoires d'idées et forces de renouvellement culturel.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « Être citoyen autrement : le rôle des contre-cultures »</span>
+                            <p>Les contre-cultures offrent une voie alternative pour exercer sa citoyenneté en dehors des canaux institutionnels traditionnels. En s'opposant aux normes dominantes, elles remettent en question les injustices sociales et proposent des modèles de société plus égalitaires. Le mouvement écologiste, initialement marginal, est un exemple frappant de contre-culture qui a transformé les débats politiques mondiaux. De même, les luttes pour les droits des minorités ont souvent émergé de mouvements contre-culturels avant d'être intégrées dans le discours dominant. Être citoyen autrement, c'est donc utiliser la créativité et la mobilisation collective pour faire évoluer la société depuis ses marges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHAPITRE 4 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>📐 Chapitre 4 : Les Nouveaux Horizons Culturels à l'Ère Technologique</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+
+                    <!-- S9 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--teal);">
+                        <span class="tag tag-notion">S9 — L'Impact de l'Innovation Numérique sur la Culture et l'Art</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : La démocratisation de la création et de la diffusion</h4>
+                            <p>Le numérique a révolutionné l'accès à la culture en rendant la création et la diffusion accessibles à tous. Les outils de production musicale, les logiciels de design et les plateformes de publication permettent à chacun de devenir créateur. Les réseaux sociaux et les plateformes de streaming éliminent les intermédiaires traditionnels, permettant aux artistes de toucher directement un public mondial sans passer par les gatekeepers de l'industrie culturelle.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : De nouvelles formes d'expérience artistique</h4>
+                            <p>La réalité augmentée, la réalité virtuelle et les installations interactives transforment la relation entre l'œuvre et le spectateur. L'art numérique invite à une participation active, où le public devient co-créateur de l'expérience. Ces technologies ouvrent des possibilités inédites d'immersion et d'interactivité, redéfinissant les frontières entre l'art, le jeu et la technologie.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : Les menaces sur l'intégrité artistique</h4>
+                            <p>Malgré ses avantages, le numérique pose des défis majeurs : la contrefaçon, la surconsommation culturelle compulsive et la dévaluation de l'œuvre d'art face à une production massive de contenu. L'IA générative soulève des questions sur l'originalité et la propriété intellectuelle. La préservation des œuvres numériques pose également un défi technique, car les formats évoluent rapidement et risquent l'obsolescence.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « Le numérique a-t-il tué l'art traditionnel ? »</span>
+                            <p>Le numérique n'a pas tué l'art traditionnel, mais il l'a transformé et enrichi de nouvelles dimensions. D'une part, il a démocratisé l'accès à la création : aujourd'hui, n'importe qui peut composer de la musique, créer des visuels ou publier des écrits grâce aux outils numériques. D'autre part, il a donné naissance à de nouvelles formes artistiques immersives comme la réalité virtuelle et les installations interactives. Cependant, cette révolution comporte des risques : la surproduction de contenu dévalue l'œuvre, et l'IA générative remet en question la notion d'originalité. L'art traditionnel et l'art numérique ne s'opposent donc pas ; ils coexistent et s'influencent mutuellement, chacun apportant sa contribution à l'évolution culturelle.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « L'art numérique : opportunités et défis »</span>
+                            <p>L'art numérique représente à la fois une opportunité extraordinaire et un défi majeur pour la culture contemporaine. Les opportunités sont nombreuses : démocratisation de la création, diffusion mondiale instantanée, et expériences immersives révolutionnaires grâce à la réalité virtuelle. Les artistes peuvent désormais toucher un public global sans intermédiaires. Cependant, ces avantages s'accompagnent de défis sérieux : la contrefaçon facilitée par la reproduction numérique, la surconsommation compulsive de contenu qui réduit l'attention portée à chaque œuvre, et les questions éthiques soulevées par l'IA générative. De plus, la préservation des œuvres numériques reste problématique face à l'obsolescence rapide des formats. L'avenir de l'art numérique dépendra donc de notre capacité à établir des cadres éthiques et techniques qui préservent l'intégrité artistique tout en encourageant l'innovation.</p>
+                        </div>
+                    </div>
+
+                    <!-- S10 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--rose);">
+                        <span class="tag tag-notion">S10 — Le Jeu Vidéo : Un Témoin de la Mondialisation Culturelle</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : Le jeu vidéo comme média culturel global</h4>
+                            <p>Le jeu vidéo est devenu le média le plus populaire au monde, dépassant le cinéma et la musique en termes de revenus. Sa diffusion mondiale via consoles, PC et plateformes mobiles en fait un vecteur puissant de mondialisation culturelle. Les jeux transportent les joueurs dans des univers inspirés de mythologies, d'histoires et d'esthétiques variées, créant un espace de rencontre culturelle unique.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : La reconnaissance artistique du jeu vidéo</h4>
+                            <p>De plus en plus, le jeu vidéo est reconnu comme une forme d'art à part entière. La narration complexe, la musique orchestrale, les graphismes soignés et l'immersion interactive en font une expérience esthétique riche. Des œuvres comme « Journey », « The Last of Us » ou « Gris » démontrent que le jeu vidéo peut évoquer des émotions profondes et aborder des thèmes universels avec la même puissance que la littérature ou le cinéma.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : Le jeu vidéo comme outil d'apprentissage interculturel</h4>
+                            <p>En immersant les joueurs dans des cultures étrangères, le jeu vidéo favorise la compréhension interculturelle et la tolérance. Les jeux qui intègrent des éléments de folklore, de mythologie ou d'histoire de différentes cultures permettent aux joueurs de découvrir des perspectives nouvelles. Cependant, ce potentiel est parfois limité par la reproduction de stéréotypes ou la domination de certaines cultures dans l'industrie.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « Le jeu vidéo est-il un art à part entière ? »</span>
+                            <p>Le jeu vidéo mérite pleinement sa reconnaissance comme forme d'art à part entière. Tout d'abord, il combine plusieurs disciplines artistiques — narration, musique, graphismes, design sonore — en une expérience interactive unique. Des œuvres comme « Journey » ou « Gris » démontrent la capacité du média à évoquer des émotions profondes et à aborder des thèmes universels. Ensuite, l'interactivité du jeu vidéo offre une dimension que les autres arts ne possèdent pas : le joueur devient acteur de l'histoire, ce qui crée un lien émotionnel particulièrement fort. Enfin, le jeu vidéo sert de vecteur de mondialisation culturelle en transportant les joueurs dans des univers inspirés de cultures variées. Bien que des défis subsistent, notamment la reproduction de stéréotypes, le jeu vidéo s'impose comme un média artistique majeur de notre époque.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « Le jeu vidéo, témoin de la mondialisation culturelle »</span>
+                            <p>Le jeu vidéo constitue un témoin privilégié de la mondialisation culturelle contemporaine. En tant que média le plus populaire au monde, il diffuse des influences culturelles à l'échelle planétaire, créant un espace où les mythologies japonaises côtoient les légendes nordiques et les esthétiques africaines. Cette convergence culturelle favorise la découverte mutuelle et la tolérance entre les peuples. Cependant, cette mondialisation n'est pas exempte de défis : l'industrie reste dominée par certaines cultures occidentales et asiatiques, et la reproduction de stéréotypes persiste dans de nombreux jeux. Malgré ces limites, le jeu vidéo offre un potentiel unique d'apprentissage interculturel et de dialogue entre les civilisations, faisant de lui un outil précieux pour la citoyenneté culturelle à l'ère numérique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHAPITRE 5 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>📐 Chapitre 5 : L'Art de l'Argumentation et les Défis de la Création à l'Ère de l'IA</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+
+                    <!-- S12 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--sage);">
+                        <span class="tag tag-notion">S12 — L'Art de l'Argumentation Écrite</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : La structure comme fondement de la persuasion</h4>
+                            <p>Un texte argumentatif efficace repose sur une structure rigoureuse : introduction captivante, développement logique et conclusion percutante. L'introduction doit accrocher le lecteur, présenter le sujet et annoncer la problématique. Le développement doit présenter des arguments hiérarchisés, chacun illustré par des exemples concrets. La conclusion répond à la problématique et ouvre sur de nouvelles perspectives. Cette structure garantit la clarté et la cohérence du raisonnement.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : L'importance des exemples et des références</h4>
+                            <p>Un argument, aussi solide soit-il, reste abstrait sans exemple concret. Les exemples illustrent le raisonnement, le rendent tangible et convaincant. Les références à des faits historiques, des œuvres artistiques, des études ou des événements contemporains renforcent la crédibilité du texte. Le lien entre l'argument et l'exemple doit être explicite pour que le lecteur comprenne comment l'exemple prouve l'argument.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : Les articulateurs logiques comme guides de lecture</h4>
+                            <p>Les connecteurs logiques (addition, opposition, cause, conséquence, but, condition) structurent le raisonnement et guident le lecteur à travers le texte. Ils créent des liens entre les idées, marquent les transitions et signalent les rapports de sens. Un usage maîtrisé des articulateurs transforme une succession d'idées en un raisonnement fluide et convaincant.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « Pourquoi l'argumentation est-elle essentielle dans la société contemporaine ? »</span>
+                            <p>L'argumentation constitue une compétence fondamentale dans la société contemporaine, où l'information abonde et où les opinions divergent. Premièrement, elle permet de structurer sa pensée de manière logique et cohérente, évitant ainsi les sophismes et les raisonnements fallacieux qui pullulent dans les débats publics. Deuxièmement, une bonne argumentation repose sur l'usage d'exemples concrets et de références crédibles qui renforcent la crédibilité du propos. Par exemple, un argument sur l'impact de l'art sur la société gagnera en force s'il s'appuie sur des cas historiques documentés. Enfin, les articulateurs logiques guident le lecteur à travers le raisonnement, créant une progression claire et convaincante. Dans un monde saturé d'informations, maîtriser l'art de l'argumentation, c'est acquérir la capacité de penser de manière critique et de convaincre avec rigueur.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « Les erreurs à éviter dans un texte argumentatif »</span>
+                            <p>La rédaction d'un texte argumentatif exige de vigilance pour éviter plusieurs écueils classiques. Tout d'abord, l'absence de problématique claire rend le texte confus et sans direction ; le lecteur ne sait pas quelle question le texte cherche à résoudre. Ensuite, les arguments sans exemples restent abstraits et peu convaincants. Un argument sur la liberté artistique, par exemple, gagnerait à s'appuyer sur des cas concrets de censure ou de controverses. De plus, l'usage incorrect des articulateurs logiques crée des ruptures dans le raisonnement et désoriente le lecteur. Enfin, une conclusion qui se contente de répéter l'introduction manque d'originalité et d'ouverture. Pour éviter ces erreurs, il est essentiel de planifier soigneusement le texte, de vérifier la cohérence entre arguments et exemples, et de réviser attentivement la formulation des transitions.</p>
+                        </div>
+                    </div>
+
+                    <!-- S13 -->
+                    <div class="card notion" style="margin-bottom:24px; border-left-color: var(--mustard);">
+                        <span class="tag tag-notion">S13 — Atelier : La Créativité en Action & Le Bien-être Numérique</span>
+                        <h3 style="margin-top:12px;">Arguments Clés</h3>
+
+                        <div class="highlight-box" style="margin-top:16px;">
+                            <h4>🎯 Argument 1 : La créativité comme compétence essentielle du XXIe siècle</h4>
+                            <p>Dans un monde en constante évolution, la créativité n'est plus un simple talent artistique mais une compétence transversale indispensable. Elle permet de résoudre des problèmes complexes, d'innover et de s'adapter aux changements. La créativité se développe par la pratique : le brainstorming, le mind mapping, la méthode SCAMPER et le Design Thinking sont autant de techniques qui stimulent la pensée divergente et aident à générer des idées originales et pertinentes.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 2 : L'infobésité et la dépendance numérique comme menaces</h4>
+                            <p>L'ère numérique, bien qu'elle offre des opportunités extraordinaires, comporte des risques pour le bien-être mental. L'infobésité — la surcharge d'informations — provoque stress, confusion et diminution de la capacité d'attention. La dépendance numérique, alimentée par les interfaces persuasives des réseaux sociaux, nuit à la santé mentale et isole l'individu. Face à ces menaces, il est urgent de développer une conscience critique de notre usage des technologies.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4>🎯 Argument 3 : Le « slow tech » et la technocompassion comme solutions</h4>
+                            <p>Face aux excès du numérique, des mouvements émergent pour promouvoir un usage plus équilibré et éthique des technologies. Le « slow tech » encourage une utilisation réfléchie et consciente des outils numériques, privilégiant la qualité à la quantité. La technocompassion invite à concevoir et à utiliser la technologie avec empathie et respect pour l'humain. Ces approches visent à préserver l'équilibre personnel tout en profitant des bienfaits du numérique.</p>
+                        </div>
+
+                        <div class="example" style="margin-top:16px;">
+                            <span class="label">Paragraphe type — Sujet : « Comment préserver sa créativité à l'ère numérique ? »</span>
+                            <p>Préserver sa créativité à l'ère numérique représente un défi majeur face à la surconsommation de contenu et aux distractions permanentes. Premièrement, il est essentiel de pratiquer régulièrement des techniques de stimulation créative comme le brainstorming, le mind mapping ou la méthode SCAMPER, qui aident à générer des idées originales. Deuxièmement, il faut lutter contre l'infobésité en limitant son exposition aux flux d'informations incessants et en privilégiant des moments de déconnexion. Le mouvement « slow tech » offre une piste intéressante en encourageant un usage réfléchi et conscient des technologies. Enfin, la technocompassion nous invite à utiliser le numérique avec empathie et respect, tant envers nous-mêmes qu'envers les autres. Ainsi, en adoptant une approche équilibrée, nous pouvons exploiter les outils numériques comme catalyseurs de créativité plutôt que comme obstacles.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « Le bien-être numérique : un enjeu de société »</span>
+                            <p>Le bien-être numérique est devenu un enjeu crucial de notre société hyperconnectée. L'infobésité, cette surcharge d'informations qui envahit nos écrans quotidiennement, génère stress, confusion et épuisement mental. Parallèlement, la dépendance numérique, alimentée par les interfaces persuasives conçues pour capter notre attention, nuit gravement à notre santé psychologique et à nos relations sociales. Face à ces réalités, il est impératif de développer une éducation au numérique qui enseigne un usage critique et équilibré des technologies. Le concept de « slow tech » propose une alternative séduisante : utiliser la technologie de manière réfléchie, consciente et respectueuse de nos besoins humains. De même, la technocompassion encourage la conception et l'utilisation des outils numériques avec empathie. Le bien-être numérique ne consiste pas à rejeter la technologie, mais à établir avec elle une relation saine et maîtrisée.</p>
+                        </div>
+
+                        <div class="example">
+                            <span class="label">Paragraphe type — Sujet : « L'IA et la créativité humaine : complémentarité ou concurrence ? »</span>
+                            <p>La relation entre l'intelligence artificielle et la créativité humaine suscite un débat passionné sur leur nature complémentaire ou concurrentielle. D'un côté, l'IA offre des outils puissants qui amplifient la créativité humaine : génération d'idées, automatisation des tâches répétitives, exploration de nouvelles esthétiques. Des artistes utilisent déjà l'IA comme collaborateur créatif, ouvrant des horizons inédits. D'un autre côté, l'IA générative pose des questions fondamentales sur l'originalité et l'authenticité de la création. Si une machine peut produire une œuvre visuellement identique à celle d'un humain, qu'est-ce qui distingue l'art humain ? La réponse réside probablement dans l'intention, l'émotion et l'expérience vécue que seul l'être humain peut transmettre. L'IA n'est donc pas une menace mais un outil ; c'est l'usage que nous en faisons qui déterminera son impact sur la créativité.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <!-- EXEMPLES D'INTRODUCTION GÉNÉRALE ET CONCLUSION -->
+    <section id="intro-conclusion" style="background: linear-gradient(180deg, #f5f0ec 0%, var(--cream) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon" style="background: #E0E8F0;">📖</div>
+                <h2>Exemples d'Introduction Générale et de Conclusion</h2>
+            </div>
+
+            <!-- INTRODUCTIONS -->
+            <div class="accordion active">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>🚪 Exemples d'Introductions Générales (Sujet Amené → Posé → Problématique → Plan)</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--burgundy);">
+                        <span class="tag tag-method">Introduction Type 1 — Thème : L'art et le changement social</span>
+                        <h3 style="margin-top:12px;">« L'art peut-il vraiment transformer la société ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--terracotta);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet amené :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Depuis l'Antiquité, l'art accompagne l'humanité dans son évolution, reflétant ses aspirations, ses conflits et ses transformations. Des fresques murales de Pompéi aux graffitis urbains contemporains, la création artistique constitue un témoin privilégié de l'état des sociétés.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet posé :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Cependant, au-delà de sa fonction de simple reflet, l'art revendique souvent un pouvoir transformateur. Les mouvements artistiques engagés, le street art politique ou les performances de protestation semblent démontrer que la création peut influencer les consciences et provoquer le changement.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px; color:var(--burgundy); font-weight:600;">Mais l'art possède-t-il réellement le pouvoir de transformer la société, ou ses effets restent-ils superficiels et éphémères ?</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Plan / Sujet divisé :</strong></p>
+                            <p style="font-style:italic;">Nous verrons d'abord que l'art agit comme un puissant miroir critique de la société, ensuite que l'art engagé peut mobiliser les foules autour d'une cause commune, et enfin que ses limites révèlent les obstacles à un changement structurel durable.</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--teal);">
+                        <span class="tag tag-method">Introduction Type 2 — Thème : Liberté artistique et éthique</span>
+                        <h3 style="margin-top:12px;">« La liberté artistique doit-elle avoir des limites ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--terracotta);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet amené :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">La liberté d'expression est considérée comme l'un des piliers fondamentaux de toute société démocratique. Dans ce cadre, la liberté artistique occupe une place particulière, car elle permet d'explorer des territoires interdits, de provoquer et de remettre en question l'ordre établi à travers la création.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet posé :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Pourtant, cette liberté fait régulièrement l'objet de controverses. Des œuvres jugées blasphématoires, des performances choquantes ou des créations incitant à la hute suscitent des débats passionnés sur les frontières de l'acceptable.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px; color:var(--burgundy); font-weight:600;">Dès lors, la liberté artistique doit-elle être absolue, ou convient-il d'établir des limites éthiques pour encadrer la création ?</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Plan / Sujet divisé :</strong></p>
+                            <p style="font-style:italic;">Nous examinerons tout d'abord les fondements et les bienfaits d'une liberté artistique sans entrave, puis nous analyserons les situations où cette liberté porte atteinte aux droits fondamentaux, avant de proposer un équilibre entre expression créative et responsabilité éthique.</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--mustard);">
+                        <span class="tag tag-method">Introduction Type 3 — Thème : Numérique et culture</span>
+                        <h3 style="margin-top:12px;">« Le numérique menace-t-il l'authenticité culturelle ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--terracotta);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet amené :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">L'avènement du numérique a bouleversé tous les aspects de notre existence, et la culture n'y a pas échappé. La création, la diffusion et la consommation culturelles ont été profondément transformées par les nouvelles technologies, ouvrant des horizons inédits tout en soulevant des interrogations fondamentales.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet posé :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Aujourd'hui, l'intelligence artificielle génère des œuvres d'art, les musées proposent des visites virtuelles immersives, et les cultures du monde entier se mélangent sur les plateformes numériques. Cette révolution technologique redéfinit les frontières de l'authenticité culturelle.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px; color:var(--burgundy); font-weight:600;">Face à cette mutation, le numérique représente-t-il une menace pour l'authenticité culturelle, ou offre-t-il au contraire de nouvelles voies pour préserver et enrichir le patrimoine culturel ?</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Plan / Sujet divisé :</strong></p>
+                            <p style="font-style:italic;">Nous étudierons dans un premier temps les risques que le numérique fait peser sur l'authenticité culturelle, puis nous explorerons les opportunités qu'il offre pour la préservation et la diffusion des cultures, avant de réfléchir à un usage équilibré et éthique des technologies.</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--lavender);">
+                        <span class="tag tag-method">Introduction Type 4 — Thème : Appropriation culturelle</span>
+                        <h3 style="margin-top:12px;">« L'appropriation culturelle : un enrichissement ou une exploitation ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--terracotta);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet amené :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Dans un monde de plus en plus connecté, les échanges culturels se multiplient à une vitesse sans précédent. Les modes, la musique, la gastronomie et les arts empruntent constamment des éléments à des cultures étrangères, créant un paysage culturel hybride et cosmopolite.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet posé :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Cependant, ces échanges ne sont pas toujours équilibrés. L'appropriation culturelle, qui consiste à emprunter des éléments d'une culture sans respect ni compréhension, suscite des controverses de plus en plus vives, accusée de dévaloriser les cultures minoritaires et de perpétuer des inégalités de pouvoir.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px; color:var(--burgundy); font-weight:600;">L'appropriation culturelle constitue-t-elle un enrichissement mutuel légitime, ou s'agit-il d'une forme d'exploitation déguisée qui mérite d'être condamnée ?</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Plan / Sujet divisé :</strong></p>
+                            <p style="font-style:italic;">Nous verrons tout d'abord en quoi l'appropriation culturelle peut être perçue comme une forme d'enrichissement, ensuite nous analyserons ses conséquences néfastes pour les cultures minoritaires, et enfin nous proposerons une voie médiane fondée sur le respect et la collaboration.</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--rose);">
+                        <span class="tag tag-method">Introduction Type 5 — Thème : Subcultures et citoyenneté</span>
+                        <h3 style="margin-top:12px;">« Les subcultures représentent-elles une forme de citoyenneté alternative ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--terracotta);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet amené :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">La citoyenneté se définit traditionnellement par l'appartenance à une nation, le respect des lois et la participation aux institutions démocratiques. Pourtant, de nombreux individus cherchent à exprimer leur engagement citoyen en dehors de ces canaux conventionnels, au sein de communautés qui partagent leurs valeurs et leurs aspirations.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet posé :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Les subcultures et les contre-cultures, qu'il s'agisse du mouvement punk, de la culture hip-hop ou des communautés écologistes, proposent des modèles alternatifs d'engagement social. Elles remettent en question les normes dominantes et offrent des espaces d'expression à ceux qui ne se reconnaissent pas dans la culture majoritaire.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px; color:var(--burgundy); font-weight:600;">Les subcultures constituent-elles une forme légitime et efficace de citoyenneté alternative, ou restent-elles de simples mouvements marginaux sans impact réel sur la société ?</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Plan / Sujet divisé :</strong></p>
+                            <p style="font-style:italic;">Nous examinerons d'abord les caractéristiques des subcultures comme espaces d'expression citoyenne alternative, ensuite nous analyserons leur impact concret sur la société dominante, et enfin nous évaluerons les limites et les défis de cette forme d'engagement.</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--sage);">
+                        <span class="tag tag-method">Introduction Type 6 — Thème : Bien-être numérique</span>
+                        <h3 style="margin-top:12px;">« Le bien-être numérique : utopie ou nécessité ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--terracotta);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet amené :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Nous vivons à une époque où la technologie envahit chaque aspect de notre quotidien. Smartphones, réseaux sociaux, plateformes de streaming et intelligence artificielle façonnent nos relations, notre travail et notre loisir, promettant connexion, efficacité et divertissement sans limites.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Sujet posé :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Cependant, cette omniprésence numérique révèle un revers de médaille inquiétant. L'infobésité, la dépendance aux écrans, l'anxiété liée aux réseaux sociaux et la perte d'attention questionnent notre rapport à la technologie. Des mouvements comme le « slow tech » et la « technocompassion » émergent pour promouvoir un usage plus équilibré.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px; color:var(--burgundy); font-weight:600;">Le bien-être numérique constitue-t-il une utopie irréalisable face à la puissance des technologies, ou s'agit-il d'une nécessité impérieuse pour préserver notre santé mentale et notre qualité de vie ?</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Plan / Sujet divisé :</strong></p>
+                            <p style="font-style:italic;">Nous analyserons d'abord les menaces que le numérique fait peser sur notre bien-être, ensuite nous explorerons les solutions proposées par les mouvements de conscience numérique, et enfin nous réfléchirons aux conditions d'un usage équilibré et épanouissant des technologies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONCLUSIONS -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>🎯 Exemples de Conclusions (Réponse → Réaffirmation → Synthèse → Ouverture)</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--burgundy);">
+                        <span class="tag tag-method">Conclusion Type 1 — Thème : L'art et le changement social</span>
+                        <h3 style="margin-top:12px;">« L'art peut-il vraiment transformer la société ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--sage);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réponse à la problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">En définitive, l'art possède bel et bien le pouvoir de transformer la société, mais cette transformation est complexe, progressive et souvent indirecte.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réaffirmation du point de vue :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Loin d'être un simple ornement esthétique, l'art constitue un levier puissant d'éveil des consciences et de mobilisation collective. Son miroir critique force la société à regarder ses propres failles, tandis que son pouvoir de rassemblement unit les individus autour de causes communes.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Synthèse :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Nous avons vu que l'art agit comme un miroir critique en dénonçant les injustices, qu'il mobilise les foules par l'art engagé, mais que ses limites révèlent l'importance de l'action concrète pour accompagner la prise de conscience. Ainsi, l'art ne change pas le monde seul, mais il en constitue le catalyseur indispensable.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Ouverture :</strong></p>
+                            <p style="font-style:italic; color:var(--teal);">À l'ère du numérique, où l'art s'exprime désormais à travers de nouveaux médias interactifs et immersifs, on peut se demander si ces technologies amplifieront ou, au contraire, dilueront le pouvoir transformateur de la création artistique.</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--teal);">
+                        <span class="tag tag-method">Conclusion Type 2 — Thème : Liberté artistique et éthique</span>
+                        <h3 style="margin-top:12px;">« La liberté artistique doit-elle avoir des limites ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--sage);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réponse à la problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">En conclusion, la liberté artistique, bien que fondamentale, ne saurait être absolue : elle doit être tempérée par une conscience éthique et le respect des droits fondamentaux d'autrui.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réaffirmation du point de vue :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Protéger la liberté artistique ne signifie pas tolérer l'incitation à la haine ni l'exploitation de la souffrance. L'artiste, en tant que citoyen responsable, doit mesurer l'impact de ses créations sur la société.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Synthèse :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Nous avons constaté que la liberté artistique est essentielle à la vitalité démocratique, que certaines limites s'imposent lorsque cette liberté porte atteinte aux droits d'autrui, et qu'un équilibre est possible grâce au débat public plutôt qu'à la censure. L'éthique artistique n'étouffe pas la créativité ; elle l'oriente vers un usage responsable de son pouvoir.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Ouverture :</strong></p>
+                            <p style="font-style:italic; color:var(--teal);">Face à l'émergence de l'intelligence artificielle générative, capable de produire des œuvres sans intention humaine, la question des responsabilités éthiques prend une dimension nouvelle : qui porte la responsabilité morale d'une création algorithmique ?</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--mustard);">
+                        <span class="tag tag-method">Conclusion Type 3 — Thème : Numérique et culture</span>
+                        <h3 style="margin-top:12px;">« Le numérique menace-t-il l'authenticité culturelle ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--sage);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réponse à la problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">En fin de compte, le numérique ne menace pas l'authenticité culturelle en soi ; ce sont les usages irresponsables et la logique commerciale qui en font un danger potentiel.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réaffirmation du point de vue :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Utilisé avec discernement, le numérique constitue un outil extraordinaire pour préserver, diffuser et enrichir les cultures du monde entier. Il démocratise l'accès au patrimoine et crée de nouvelles formes d'expression artistique.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Synthèse :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Nous avons vu que le numérique comporte des risques réels pour l'authenticité, qu'il offre des opportunités sans précédent pour la préservation culturelle, et qu'un cadre éthique est nécessaire pour guider son usage. L'avenir de la culture ne dépend pas de la technologie elle-même, mais de la manière dont nous choisissons de l'utiliser.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Ouverture :</strong></p>
+                            <p style="font-style:italic; color:var(--teal);">Alors que les métavers et les mondes virtuels immersifs se développent rapidement, il devient urgent de réfléchir aux droits culturels dans ces espaces numériques : qui contrôlera la mémoire collective de demain ?</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--lavender);">
+                        <span class="tag tag-method">Conclusion Type 4 — Thème : Appropriation culturelle</span>
+                        <h3 style="margin-top:12px;">« L'appropriation culturelle : un enrichissement ou une exploitation ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--sage);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réponse à la problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">En définitive, l'appropriation culturelle n'est ni un enrichissement mutuel ni une exploitation inévitable : elle dépend entièrement de l'intention, du respect et de la reconnaissance dont elle est accompagnée.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réaffirmation du point de vue :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Lorsqu'elle est pratiquée avec ignorance et profit, l'appropriation culturelle constitue une forme d'exploitation qui dévalorise les cultures minoritaires. En revanche, l'appréciation culturelle, fondée sur la compréhension et le respect, enrichit toutes les parties impliquées.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Synthèse :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Nous avons vu que les échanges culturels peuvent être bénéfiques, que l'appropriation sans respect cause des dommages réels aux communautés marginalisées, et qu'une approche collaborative et éducative offre une voie médiane prometteuse. La clé réside dans l'équité et la reconnaissance.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Ouverture :</strong></p>
+                            <p style="font-style:italic; color:var(--teal);">Dans un monde où les frontières culturelles s'effacent de plus en plus sous l'effet de la mondialisation numérique, la question de l'appropriation culturelle ne fera que s'intensifier, exigeant de chacun une vigilance accrue et une éducation interculturelle continue.</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--rose);">
+                        <span class="tag tag-method">Conclusion Type 5 — Thème : Subcultures et citoyenneté</span>
+                        <h3 style="margin-top:12px;">« Les subcultures représentent-elles une forme de citoyenneté alternative ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--sage);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réponse à la problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">En conclusion, les subcultures constituent indéniablement une forme légitime et efficace de citoyenneté alternative, complémentaire de l'engagement institutionnel traditionnel.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réaffirmation du point de vue :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Elles offrent des espaces d'expression à ceux que la culture dominante marginalise, proposent des modèles de société alternatifs et finissent par influencer profondément les normes établies. Leur impact, bien que parfois invisible à court terme, s'avère durable et transformateur.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Synthèse :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Nous avons vu que les subcultures offrent des espaces d'expression citoyenne alternative, qu'elles exercent un impact concret sur la société dominante, et qu'elles font face à des défis comme la récupération commerciale. Malgré ces obstacles, elles demeurent des laboratoires d'idées essentiels au renouvellement social.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Ouverture :</strong></p>
+                            <p style="font-style:italic; color:var(--teal);">À mesure que les mouvements sociaux s'organisent de plus en plus en ligne, on peut se demander si les subcultures numériques — communautés virtuelles, influenceurs engagés, hacktivistes — ne représentent pas la prochaine évolution de cette citoyenneté alternative.</p>
+                        </div>
+                    </div>
+
+                    <div class="card method" style="margin-bottom:20px; border-left-color: var(--sage);">
+                        <span class="tag tag-method">Conclusion Type 6 — Thème : Bien-être numérique</span>
+                        <h3 style="margin-top:12px;">« Le bien-être numérique : utopie ou nécessité ? »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--sage);">
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réponse à la problématique :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">En définitive, le bien-être numérique n'est ni une utopie inaccessible ni un simple luxe : c'est une nécessité vitale pour préserver notre santé mentale et notre qualité de vie dans une société hyperconnectée.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Réaffirmation du point de vue :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Le numérique n'est pas l'ennemi ; c'est notre rapport non réfléchi à la technologie qui constitue le danger. En adoptant une approche consciente et équilibrée, nous pouvons profiter des bienfaits du numérique tout en protégeant notre équilibre personnel.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Synthèse :</strong></p>
+                            <p style="font-style:italic; margin-bottom:12px;">Nous avons constaté que le numérique comporte des menaces sérieuses pour notre bien-être, que des solutions comme le slow tech et la technocompassion offrent des pistes prometteuses, et qu'un usage équilibré exige à la fois une éducation individuelle et une régulation collective. Le défi est de taille, mais il n'est pas insurmontable.</p>
+
+                            <p style="font-size:0.85rem; color:var(--sage); margin-bottom:8px;"><strong>Ouverture :</strong></p>
+                            <p style="font-style:italic; color:var(--teal);">Alors que l'intelligence artificielle s'immisce de plus en plus dans nos vies quotidiennes, anticipant nos besoins et personnalisant nos expériences, la question du bien-être numérique prendra une dimension encore plus cruciale : comment préserver notre autonomie face à des technologies conçues pour capturer notre attention de manière toujours plus sophistiquée ?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECTEURS / ARTICULATEURS LOGIQUES -->
+    <section id="linkers" style="background: linear-gradient(180deg, var(--cream) 0%, #f0f7f5 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon" style="background: #E0F0EC;">🔗</div>
+                <h2>Connecteurs Logiques (Articulateurs) — Guide Complet</h2>
+            </div>
+
+            <div class="highlight-box" style="margin-bottom:28px;">
+                <h4>💡 Pourquoi les articulateurs sont essentiels</h4>
+                <p>Les connecteurs logiques structurent votre raisonnement, guident le lecteur à travers vos idées et créent des liens entre vos arguments. Un bon usage des articulateurs transforme une succession de phrases en un raisonnement fluide et convaincant. Ils signalent au lecteur la relation entre les idées : addition, opposition, cause, conséquence, but, condition, temps, exemple.</p>
+            </div>
+
+            <!-- Tableau récapitulatif -->
+            <div class="table-wrap" style="margin-bottom:32px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:18%;">Fonction</th>
+                            <th style="width:35%;">Articulateurs courants</th>
+                            <th style="width:47%;">Exemple d'utilisation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color:var(--terracotta)">Addition / Énumération</strong></td>
+                            <td>et, de plus, en outre, également, aussi, non seulement... mais aussi, en plus, par ailleurs, de surcroît</td>
+                            <td><em>L'art engagé dénonce les injustices sociales. <strong>De plus</strong>, il mobilise les foules autour de causes communes.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--burgundy)">Opposition / Concession</strong></td>
+                            <td>mais, cependant, néanmoins, toutefois, par contre, en revanche, bien que, quoique, même si, certes... mais, pourtant, malgré, en dépit de</td>
+                            <td><em>La liberté artistique est fondamentale. <strong>Cependant</strong>, elle ne saurait justifier l'incitation à la haine.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--sage)">Cause / Explication</strong></td>
+                            <td>car, parce que, en effet, puisque, étant donné que, à cause de, en raison de, du fait que, sous prétexte que</td>
+                            <td><em>Les subcultures s'opposent à la culture dominante, <strong>car</strong> elles proposent des valeurs alternatives.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--teal)">Conséquence / Résultat</strong></td>
+                            <td>donc, ainsi, par conséquent, c'est pourquoi, d'où, de ce fait, aussi, en conséquence, par suite, il en résulte que</td>
+                            <td><em>Le numérique démocratise la création. <strong>Par conséquent</strong>, chacun peut aujourd'hui devenir artiste.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--mustard)">But / Objectif</strong></td>
+                            <td>pour, afin de (+ inf.), dans le but de, en vue de, de manière à, de façon à, dans l'intention de, dans l'objectif de</td>
+                            <td><em>Les artistes protestataires créent <strong>afin de</strong> sensibiliser le public aux injustices sociales.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--lavender)">Condition / Hypothèse</strong></td>
+                            <td>si, à condition que, pourvu que, au cas où, à moins que, dans l'hypothèse où, supposons que</td>
+                            <td><em><strong>Si</strong> l'artiste respecte le contexte culturel, son inspiration ne relève pas de l'appropriation.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--rose)">Temps / Chronologie</strong></td>
+                            <td>d'abord, ensuite, puis, enfin, finalement, auparavant, antérieurement, lorsque, pendant que, après que, depuis que, aussitôt que</td>
+                            <td><em><strong>D'abord</strong>, l'art reflète la société ; <strong>ensuite</strong>, il la critique ; <strong>enfin</strong>, il la transforme.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--dark)">Exemple / Illustration</strong></td>
+                            <td>par exemple, notamment, en particulier, tel que, comme, ainsi que, c'est le cas de, à titre d'exemple, entre autres</td>
+                            <td><em>Plusieurs artistes s'engagent contre les injustices, <strong>notamment</strong> Banksy avec son street art politique.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:#8B6914">Comparaison</strong></td>
+                            <td>comme, de même que, ainsi que, de la même manière, de façon similaire, de même, par analogie, à l'instar de</td>
+                            <td><em><strong>De même que</strong> le punk a critiqué le consumérisme, le mouvement écologiste dénonce l'exploitation de la nature.</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:#4A6741">Restriction</strong></td>
+                            <td>sauf, excepté, hormis, à part, si ce n'est, en dehors de, tout au plus, dans une certaine mesure</td>
+                            <td><em>Le numérique enrichit la culture, <strong>sauf</strong> lorsqu'il se réduit à une consommation compulsive.</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Exemples d'usage dans un texte argumentatif -->
+            <div class="accordion active">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>✍️ Exemples d'Usage des Articulateurs dans un Texte Argumentatif</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+
+                    <div class="card grammar" style="margin-bottom:20px; border-left-color: var(--terracotta);">
+                        <span class="tag tag-grammar">Exemple 1 — Paragraphe argumentatif complet</span>
+                        <h3 style="margin-top:12px;">« L'art engagé comme force de changement social »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; line-height:2;">
+                            <p><strong style="color:var(--terracotta)">D'abord</strong>, l'art engagé constitue un puissant miroir critique de la société. Les artistes utilisent leur créativité pour dénoncer les injustices et interroger les normes établies. <strong style="color:var(--teal)">Ainsi</strong>, le street art de Banksy utilise l'humour et la dérision pour critiquer le consumérisme et les inégalités. <strong style="color:var(--mustard)">Afin de</strong> sensibiliser le public, ces œuvres s'installent dans l'espace public où elles sont visibles par tous. <strong style="color:var(--sage)">En effet</strong>, l'accessibilité de ces créations permet de toucher un large public, y compris ceux qui ne fréquentent pas les musées.</p>
+
+                            <p style="margin-top:12px;"><strong style="color:var(--lavender)">De plus</strong>, l'art de la proteste mobilise les foules autour de causes communes. <strong style="color:var(--rose)">Par exemple</strong>, les chants de protestation durant les mouvements sociaux créent un sentiment de solidarité et donnent une voix aux marginalisés. <strong style="color:var(--burgundy)">Cependant</strong>, il ne faut pas surestimer le pouvoir de l'art : une œuvre provocatrice, <strong style="color:var(--sage)">bien qu'</strong>elle éveille les consciences, ne suffit pas à changer les structures sociales. <strong style="color:var(--teal)">Par conséquent</strong>, l'art doit être accompagné d'actions concrètes pour transformer la société durablement.</p>
+                        </div>
+                        <p style="margin-top:12px; font-size:0.8rem; color:var(--sage);"><em>→ Ce paragraphe utilise des articulateurs de temps, conséquence, but, cause, addition, exemple, opposition et concession pour créer un raisonnement fluide et structuré.</em></p>
+                    </div>
+
+                    <div class="card grammar" style="margin-bottom:20px; border-left-color: var(--teal);">
+                        <span class="tag tag-grammar">Exemple 2 — Paragraphe avec concession et réfutation</span>
+                        <h3 style="margin-top:12px;">« Les limites de la liberté artistique »</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; line-height:2;">
+                            <p><strong style="color:var(--terracotta)">Certes</strong>, la liberté artistique constitue un pilier de la démocratie et doit être protégée. <strong style="color:var(--mustard)">En effet</strong>, sans cette liberté, l'art deviendrait de la simple propagande et la société perdrait sa capacité à évoluer. <strong style="color:var(--burgundy)">Néanmoins</strong>, cette liberté ne saurait être absolue. <strong style="color:var(--sage)">Car</strong>, lorsqu'une œuvre incite à la haine ou glorifie la violence, elle porte atteinte aux droits fondamentaux d'autrui. <strong style="color:var(--lavender)">Dans ce cas</strong>, la société a le droit et le devoir d'intervenir. <strong style="color:var(--rose)">Par exemple</strong>, les lois contre l'incitation à la haine raciale s'appliquent également aux créations artistiques. <strong style="color:var(--teal)">Il en résulte que</strong> l'éthique artistique impose à chaque créateur de réfléchir à l'impact de son œuvre sur le public.</p>
+                        </div>
+                        <p style="margin-top:12px; font-size:0.8rem; color:var(--sage);"><em>→ La concession (« Certes... ») renforce la crédibilité de l'auteur en montrant qu'il considère les deux côtés du débat avant de réfuter.</em></p>
+                    </div>
+
+                    <div class="card grammar" style="margin-bottom:20px; border-left-color: var(--mustard);">
+                        <span class="tag tag-grammar">Exemple 3 — Paragraphe de transition entre deux arguments</span>
+                        <h3 style="margin-top:12px;">Transition : du premier au deuxième argument</h3>
+                        <div style="margin-top:16px; padding:16px; background:#faf8f5; border-radius:10px; line-height:2;">
+                            <p><strong style="color:var(--terracotta)">Après avoir montré que</strong> l'art agit comme un miroir critique de la société, <strong style="color:var(--teal)">il convient désormais d'examiner</strong> son pouvoir de mobilisation collective. <strong style="color:var(--sage)">En effet</strong>, l'art ne se contente pas de refléter ; il agit. <strong style="color:var(--mustard)">Ainsi</strong>, les mouvements sociaux ont toujours utilisé l'art comme outil de rassemblement. <strong style="color:var(--rose)">Notamment</strong>, les affiches politiques du mouvement ouvrier au XIXe siècle ont joué un rôle décisif dans la mobilisation des masses. <strong style="color:var(--lavender)">De la même manière</strong>, les graffitis contemporains continuent de galvaniser les communautés marginalisées. <strong style="color:var(--burgundy)">Toutefois</strong>, cette mobilisation ne se limite pas à la proteste : l'art peut aussi unir autour de projets constructifs.</p>
+                        </div>
+                        <p style="margin-top:12px; font-size:0.8rem; color:var(--sage);"><em>→ Les transitions entre arguments doivent être explicites pour guider le lecteur dans la progression du raisonnement.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Astuces et erreurs à éviter -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+                    <span>⚠️ Astuces et Erreurs à Éviter avec les Articulateurs</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="two-col">
+                        <div class="card grammar" style="border-left-color: var(--sage);">
+                            <span class="tag tag-grammar">✅ Bonnes pratiques</span>
+                            <h3 style="margin-top:12px;">Ce qu'il faut faire</h3>
+                            <ul class="styled-list" style="font-size:0.9rem; margin-top:12px;">
+                                <li><strong>Varier les articulateurs</strong> : éviter de répéter « de plus » ou « donc » à chaque phrase.</li>
+                                <li><strong>Adapter le niveau de langue</strong> : « en outre » est plus soutenu que « aussi ».</li>
+                                <li><strong>Vérifier la cohérence</strong> : l'articulateur doit refléter la relation réelle entre les idées.</li>
+                                <li><strong>Placer l'articulateur en début de phrase</strong> pour marquer clairement la transition (sauf « et », « car », « mais »).</li>
+                                <li><strong>Utiliser des articulateurs de concession</strong> (« certes », « bien que ») pour montrer que vous envisagez les deux côtés du débat.</li>
+                                <li><strong>Créer des transitions explicites</strong> entre les arguments pour guider le lecteur.</li>
+                            </ul>
+                        </div>
+                        <div class="card grammar" style="border-left-color: var(--burgundy);">
+                            <span class="tag tag-grammar">❌ Erreurs fréquentes</span>
+                            <h3 style="margin-top:12px;">Ce qu'il faut éviter</h3>
+                            <ul class="styled-list" style="font-size:0.9rem; margin-top:12px;">
+                                <li><strong>Répéter toujours le même articulateur</strong> : cela rend le texte monotone et répétitif.</li>
+                                <li><strong>Utiliser « donc » à chaque phrase</strong> : variez avec « par conséquent », « ainsi », « c'est pourquoi ».</li>
+                                <li><strong>Placer un articulateur sans virgule</strong> : « De plus, il faut... » (et non « De plus il faut... »).</li>
+                                <li><strong>Confondre la cause et la conséquence</strong> : « car » introduit une cause, « donc » une conséquence.</li>
+                                <li><strong>Utiliser « mais » en début de paragraphe</strong> : préférez « cependant », « néanmoins », « toutefois ».</li>
+                                <li><strong>Surutiliser les articulateurs</strong> : un texte saturé de connecteurs devient lourd et artificiel.</li>
+                                <li><strong>Utiliser « par contre » au lieu de « en revanche »</strong> dans un registre soutenu.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box important" style="margin-top:20px;">
+                        <h4>📝 Rappel : La structure idéale d'un paragraphe argumentatif</h4>
+                        <p style="margin-top:8px;"><strong>1. Phrase d'accroche / Transition :</strong> relie le paragraphe au précédent (ex: « Après avoir montré que..., il convient d'examiner... »)</p>
+                        <p style="margin-top:4px;"><strong>2. Présentation de l'argument :</strong> énoncez clairement l'idée principale du paragraphe.</p>
+                        <p style="margin-top:4px;"><strong>3. Explication de l'argument :</strong> développez votre raisonnement avec des articulateurs logiques.</p>
+                        <p style="margin-top:4px;"><strong>4. Exemple concret :</strong> illustrez avec un cas précis, une référence ou un fait.</p>
+                        <p style="margin-top:4px;"><strong>5. Mini-conclusion :</strong> revenez brièvement à l'argument pour le renforcer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-family:'Playfair Display', serif; font-size:1.2rem; font-style:italic;">Bonne chance pour les examens !</p>
+            <p style="margin-top:8px; opacity:0.7; font-size:0.85rem;">CCCF3 — 2025/2026 | Révision complète des notions, grammaire et soft skills</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
